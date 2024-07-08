@@ -7,6 +7,7 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Router {
     private $routes;
+    private $currentGroupPrefix = '';
 
     public function __construct() {
         $this->routes = new RouteCollection();
@@ -28,7 +29,8 @@ class Router {
         $this->addRoute('DELETE', $path, $controller, $name);
     }
 
-    private function addRoute($method, $path, $controller, $name) {
+    private function addRoute($method, $path, $controller, $name){
+        $path = $this->currentGroupPrefix . $path;
         $route = new Route($path, [
             '_controller' => $controller,
         ]);
@@ -39,6 +41,16 @@ class Router {
         } else {
             $this->routes->add($path, $route);
         }
+    }
+
+    public function group($prefix, $callback)
+    {
+        $previousGroupPrefix = $this->currentGroupPrefix;
+        $this->currentGroupPrefix = $previousGroupPrefix . $prefix;
+        
+        $callback($this);
+        
+        $this->currentGroupPrefix = $previousGroupPrefix;
     }
 
     public function getRoutes() {

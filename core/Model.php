@@ -12,9 +12,9 @@ class Model {
             $this->db->addConnection([
                 'driver'    => 'mysql',
                 'host'      => '127.0.0.1',
-                'database'  => 'sudhabd',
-                'username'  => 'sudhausr',
-                'password'  => 'pwguru007',
+                'database'  => 'micro',
+                'username'  => 'micro',
+                'password'  => 'micro@123',
                 'charset'   => 'utf8',
                 'collation' => 'utf8_unicode_ci',
                 'prefix'    => '',
