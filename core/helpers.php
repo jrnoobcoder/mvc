@@ -28,7 +28,7 @@
 	* @return  [type]  
 	*/
 	function asset($file_path = ""){
-		$path =  baseUrl(). "/public/asstes/${file_path}";
+		$path =  baseUrl(). "/assets/${file_path}";
 		
 		
 		return $path;
@@ -42,9 +42,23 @@
 	* @return  [type]  
 	*/
 	function css($file_path = ""){
-		$path =  baseUrl(). "/public/asstes/css/${file_path}";
+		$path =  baseUrl(). "/assets/css/${file_path}";
 		return $path;
 	}
+
+
+	/**
+	* create storage file URL
+	* @author Risecommerce <https://risecommerce.com>
+	* @version 1.0
+	* @param   [type] $file_path 
+	* @return  [type]  
+	*/
+	function storage($file_path = ""){
+		$path =  baseUrl(). "/storage/${file_path}";
+		return $path;
+	}
+
 	
 	/**
 	* create resource URL

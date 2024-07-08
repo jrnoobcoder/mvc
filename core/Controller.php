@@ -16,6 +16,6 @@ class Controller {
             extract($data);
         }
          
-        require_once '../resources/views/' . $view . '.php';
+        require_once '../frontend/views/' . $view . '.php';
     }
 }
