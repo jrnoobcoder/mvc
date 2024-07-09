@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../vendor/autoload.php';
 require '../core/helpers.php';
 
@@ -21,6 +22,7 @@ $routes = require '../routes/web.php';
 
 // Match the current request
 $context = new RequestContext($_SERVER['REQUEST_URI']);
+$context->setBaseUrl('/');
 $matcher = new UrlMatcher($routes, $context);
 $generator = new UrlGenerator($routes, $context);
 $request = ServerRequestFactory::fromGlobals();
@@ -41,7 +43,14 @@ try {
     }
 
     $controllerInstance = new $controller();
-    $response = $controllerInstance->$method($parameters);
+    // Handle special case for login endpoint
+    //if ($controller === 'App\Controllers\Auth\LoginController' && $method === 'login') {
+        // Pass parameters to the method
+        $response = $controllerInstance->$method($request);
+    //} else {
+        // For other endpoints, pass parameters as before
+      //  $response = $controllerInstance->$method($parameters);
+    //}
 
 } catch (Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
     $controllerInstance = new ErrorController();
