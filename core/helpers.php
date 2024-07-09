@@ -91,3 +91,5 @@
 		global $generator; // Assuming the generator is available globally
 		return $generator->generate($name, $parameters);
 	}
+
+	//echo route("admin_validate");

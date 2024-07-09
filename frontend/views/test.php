@@ -1,6 +1,9 @@
 <!-- frontend/views/index.php -->
 
 <?php
+if (isset($_SESSION)){
+  print_r($_SESSION);
+}
 $title = 'Home Page';
 ob_start();
 ?>

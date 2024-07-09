@@ -1,0 +1,17 @@
+.form-box {
+    max-width: 425px;
+}
+
+.form-box .card {
+    border-radius: unset;
+}
+.form-box .card-header{
+    border: none;
+}
+.bg-white {
+    background: #fff;
+}
+.btn-purple {
+    background-color: #6c22a6;
+    color: #fff;
+}
